@@ -48,7 +48,7 @@ private:
 int main()
 {
 DataManager dm;//создание обьекта класса для взаимодействия с ним 
-std::cout << dm.mostPopChedKey() << std::endl;//вызов фунции и вывод результата ее работы в консол  через пространство имен std
+std::cout << dm.mostPopChedKey() << std::endl;//вызов фунции и вывод результата ее работы в консол  через дескриптор std::cout
 
 
 return 0;
