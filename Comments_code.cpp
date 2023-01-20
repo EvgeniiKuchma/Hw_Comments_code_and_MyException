@@ -3,7 +3,10 @@
 #include <vector>
 #include <unordered_map>
 #include <tuple>
-
+#include <new>
+#include <limits>
+#include "MyException.h"
+///////////////////////////////////++++++++++ + NEW TASK ++++++++++++
 class DataManager//создаем класс
 {
 public://создаем мдификатор доступа: доступ открыт всем, кто видит определение данного класса
@@ -44,13 +47,60 @@ public://создаем мдификатор доступа: доступ открыт всем, кто видит определение д
 	}
 private:
 	std::vector<int> _key = { 1,1,2,2,2,4,2,6,7,7,7,2 };//тот самый столько раз мною упомянутый вектор
-
 };
+///////////////////////////////////+++++++++++ NEW TASK ++++++++++++
+MyException  r;
+template<typename T>
+T MyExceptionFunc(T a, T b)
+{
+	if (b == 0) 
+	{
+		throw  r;
+	}
+	return a / b;
+}
+///////////////////////////////////+++++++++++ NEW TASK ++++++++++++
+
 int main()
 {
+//////////////////////////////////+++++++++++ NEW TASK++++++++++++
 DataManager dm;//создание обьекта класса для взаимодействия с ним 
 std::cout << dm.mostPopChedKey() << std::endl;//вызов фунции и вывод результата ее работы в консол  через дескриптор std::cout
-
-
+//////////////////////////////////+++++++++++ NEW TASK++++++++++++
+std::cout << "+++++++++++ /NEW TASK/ ++++++++++++\n" << std::endl;
+int n ;
+std::cout << "pls enter the biggest number who you know" << std::endl;
+try
+{
+	do
+	{
+		std::cin >> n;
+		 int *list = new int[n * 10000000000];
+		std::cout << "Nice number!!!" << std::endl;
+		delete[] list;
+	} while (n > std::numeric_limits<int>::max());
+}
+catch (const std::bad_alloc& e) 
+{
+std::cout << "Allocation failed: " << e.what() << '\n';
+}
+//////////////////////////////////+++++++++++ NEW TASK++++++++++++
+std::cout << "\n+++++++++++ /NEW TASK/ ++++++++++++\n" << std::endl;
+try
+{ 
+	double a, b;
+	do
+	{
+	std::cout << "\nPlease enter the numbers with which you want to perform the division operation: ";
+	std::cin >>  a;
+	std::cout << "\nPlease enter the next numbers: "; 
+	std::cin >> b;
+	std::cout <<"\nResult you division: " << MyExceptionFunc(a, b) << std::endl;;
+	} while (b != 0);
+}
+catch ( MyException& e1)
+{
+	std::cerr << e1.what();
+}
 return 0;
 }
